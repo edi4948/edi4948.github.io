@@ -362,6 +362,40 @@
       font-style: italic;
     }
 
+    /* ── MENTIONS LÉGALES ───────────────────── */
+    #mentions {
+      background: var(--dark);
+      border-top: 1px solid rgba(200,169,110,0.1);
+      padding: 3rem 2rem;
+    }
+
+    .mentions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    #mentions h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.65;
+      margin-bottom: 0.6rem;
+    }
+
+    #mentions p {
+      font-size: 0.85rem;
+      opacity: 0.45;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    @media (max-width: 680px) {
+      .mentions-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+
     /* ── FOOTER ──────────────────────────────── */
     footer {
       background: var(--dark);
@@ -579,6 +613,24 @@
   </div>
 </section>
 
+<!-- MENTIONS LÉGALES -->
+<section id="mentions" aria-label="Informations légales">
+  <div class="container mentions-grid">
+    <div>
+      <h3>Confidentialité</h3>
+      <p>Ce site ne collecte aucune donnée personnelle.<br>Aucun cookie de suivi n'est utilisé.</p>
+    </div>
+    <div>
+      <h3>Hébergement</h3>
+      <p>GitHub, Inc.<br>88 Colin P Kelly Jr St<br>San Francisco, CA 94107, USA</p>
+    </div>
+    <div>
+      <h3>Accessibilité</h3>
+      <p>Ce site s'efforce d'être accessible au plus grand nombre : titres structurés, contraste lisible, images décrites, liens compréhensibles.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-pave" aria-hidden="true"></div>
@@ -600,7 +652,6 @@
   }
 
   function revealEmail() {
-    // ROT13 of: secret.tlv.4948@gmail.com
     var encoded = 'frperg.gyi.4948\u0040tznvy.pbz';
     var addr = rot13(encoded);
     var box = document.getElementById('eml-box');
