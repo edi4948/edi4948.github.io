@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="3" fill="#08080e"/>
+  <!-- Compass left arm -->
+  <line x1="16" y1="4" x2="5"  y2="28" stroke="#c8a96e" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Compass right arm -->
+  <line x1="16" y1="4" x2="27" y2="28" stroke="#c8a96e" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Compass spread-pin arc -->
+  <path d="M 9 19 A 8 8 0 0 0 23 19" stroke="#c8a96e" stroke-width="1.4" fill="none"/>
+  <!-- Letter G -->
+  <text x="20" y="25" text-anchor="middle" dominant-baseline="middle"
+        font-family="Georgia,serif" font-size="9" fill="#c8a96e">G</text>
+</svg>

@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loge Étoile d'Israël · Grand Orient de France</title>
   <meta name="description" content="Loge maçonnique Étoile d'Israël, à l'Orient de Tel Aviv, placée sous les auspices du Grand Orient de France.">
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <!-- HTTP → HTTPS redirect (backup for GitHub Pages) -->
+  <script>if(location.protocol==='http:'&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1')location.replace('https:'+location.href.slice(5));</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
@@ -26,7 +30,7 @@
       background: var(--dark);
       color: var(--text);
       font-family: 'EB Garamond', Georgia, serif;
-      font-size: 1.1rem;
+      font-size: 1.45rem;
       line-height: 1.8;
     }
 
@@ -39,27 +43,20 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.1rem 3rem;
-      background: rgba(8,8,14,0.92);
+      background: rgba(8,8,14,0.93);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(200,169,110,0.15);
+      border-bottom: 1px solid rgba(200,169,110,0.14);
     }
 
     .nav-logo {
       font-family: 'Cinzel', serif;
       color: var(--gold);
-      font-size: 0.9rem;
-      letter-spacing: 0.12em;
+      font-size: 0.88rem;
+      letter-spacing: 0.14em;
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
     }
 
-    nav ul {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+    nav ul { display: flex; gap: 2.5rem; list-style: none; }
 
     nav a {
       color: var(--text);
@@ -87,102 +84,113 @@
     }
 
     .hero-bg {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 50% 45%, #1c1c3e 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 50% 45%, rgba(200,169,110,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 60% at 50% 45%, #1b1b3a 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 50% 45%, rgba(200,169,110,0.05) 0%, transparent 60%),
         var(--dark);
     }
 
-    /* Subtle grid lines */
+    /* Subtle grid */
     .hero-bg::after {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(200,169,110,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,169,110,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%);
+      mask-image: radial-gradient(ellipse 80% 80% at center, black 20%, transparent 75%);
     }
 
-    .star {
-      font-size: clamp(3rem, 8vw, 5.5rem);
+    .hero-content { position: relative; z-index: 1; }
+
+    /* ── Slot for the lodge coat of arms ───────
+       Uncomment the <img> tag below to display it.
+       ─────────────────────────────────────────── */
+    .lodge-emblem {
+      min-height: 10px; /* shrinks to nothing when empty */
+      margin: 0 auto 2rem;
+    }
+
+    .lodge-emblem img {
+      max-width: 200px;
+      max-height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 24px rgba(200,169,110,0.35));
+    }
+
+    /* ── Compass & Square SVG ─────────────────── */
+    .masonic-emblem {
+      width: 130px;
+      height: 130px;
       color: var(--gold);
-      position: relative;
-      z-index: 1;
-      margin-bottom: 1.5rem;
-      animation: glow 5s ease-in-out infinite;
-      line-height: 1;
+      margin: 0 auto 1.8rem;
+      display: block;
+      animation: glow-svg 5s ease-in-out infinite;
+      filter: drop-shadow(0 0 8px rgba(200,169,110,0.25));
     }
 
-    @keyframes glow {
-      0%, 100% { text-shadow: 0 0 20px rgba(200,169,110,0.3), 0 0 40px rgba(200,169,110,0.1); }
-      50%       { text-shadow: 0 0 40px rgba(200,169,110,0.6), 0 0 80px rgba(200,169,110,0.25); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
+    @keyframes glow-svg {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(200,169,110,0.25)); }
+      50%       { filter: drop-shadow(0 0 22px rgba(200,169,110,0.55)); }
     }
 
     .hero-eyebrow {
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-      letter-spacing: 0.35em;
+      font-size: clamp(0.6rem, 1.5vw, 0.78rem);
+      letter-spacing: 0.38em;
       text-transform: uppercase;
       color: var(--gold);
-      opacity: 0.75;
-      margin-bottom: 1rem;
+      opacity: 0.72;
+      margin-bottom: 0.9rem;
     }
 
     .hero-content h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(2.2rem, 7vw, 5rem);
+      font-size: clamp(3rem, 7vw, 5.5rem);
       color: var(--text-light);
       letter-spacing: 0.06em;
       line-height: 1.15;
-      margin-bottom: 0.3rem;
     }
 
-    .ornament {
+    /* ── Sun / Moon ornament ─────────────────── */
+    .luminary-ornament {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      margin: 1.5rem 0;
+      margin: 1.4rem auto;
+      font-size: 1.1rem;
       color: var(--gold);
-      opacity: 0.5;
+      opacity: 0.7;
+      letter-spacing: 0.1em;
     }
 
-    .ornament::before,
-    .ornament::after {
-      content: '';
+    .luminary-ornament .rule-short {
       display: block;
-      width: 60px;
+      width: 40px;
       height: 1px;
       background: var(--gold);
+      opacity: 0.5;
     }
 
     .hero-tagline {
       font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-size: clamp(1.3rem, 2.5vw, 1.6rem);
       color: var(--text);
-      opacity: 0.75;
-      max-width: 540px;
+      opacity: 0.72;
+      max-width: 520px;
       margin: 0 auto;
     }
 
     .scroll-hint {
       position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
+      bottom: 2.5rem; left: 50%;
       transform: translateX(-50%);
       z-index: 1;
       color: var(--gold);
-      opacity: 0.35;
-      font-size: 1.4rem;
+      opacity: 0.3;
+      font-size: 1.3rem;
       animation: bounce 2.5s ease-in-out infinite;
     }
 
@@ -191,18 +199,26 @@
       50%       { transform: translateX(-50%) translateY(10px); }
     }
 
-    /* ── SECTIONS ────────────────────────────── */
-    section:not(#hero) {
-      padding: 6rem 2rem;
+    /* ── PAVÉ MOSAÏQUE strip ─────────────────── */
+    .pave-strip {
+      height: 28px;
+      background-color: #04040a;
+      background-image:
+        linear-gradient(45deg,  rgba(200,169,110,0.38) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(200,169,110,0.38) 25%, transparent 25%),
+        linear-gradient(45deg,  transparent 75%, rgba(200,169,110,0.38) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(200,169,110,0.38) 75%);
+      background-size: 28px 28px;
+      background-position: 0 0, 0 14px, 14px -14px, -14px 0;
     }
+
+    /* ── SECTIONS ────────────────────────────── */
+    section:not(#hero) { padding: 6rem 2rem; }
 
     #franc-maconnerie { background: var(--dark-2); }
     #contact          { background: var(--dark-3); }
 
-    .container {
-      max-width: 820px;
-      margin: 0 auto;
-    }
+    .container { max-width: 820px; margin: 0 auto; }
 
     .section-label {
       font-family: 'Cinzel', serif;
@@ -210,30 +226,42 @@
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--gold);
-      opacity: 0.8;
+      opacity: 0.78;
       display: block;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.7rem;
     }
 
     h2 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-size: clamp(2.2rem, 4vw, 3rem);
       color: var(--text-light);
       line-height: 1.25;
-      margin-bottom: 0.25rem;
     }
 
-    .rule {
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(to right, var(--gold), transparent);
-      margin: 1.2rem 0 2rem;
-      border: none;
+    /* Ornamental section rule with sun/moon */
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1rem 0 2.2rem;
+      color: var(--gold);
+      opacity: 0.55;
+      font-size: 0.9rem;
     }
+
+    .section-rule::before,
+    .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      max-width: 80px;
+    }
+
+    .section-rule::before { background: linear-gradient(to right, transparent, var(--gold)); }
 
     p { margin-bottom: 1.1rem; opacity: 0.9; }
     p:last-child { margin-bottom: 0; }
-
     strong { color: var(--text-light); font-weight: 500; }
 
     blockquote {
@@ -242,7 +270,6 @@
       margin: 2.5rem 0;
       background: rgba(200,169,110,0.04);
       font-style: italic;
-      font-size: 1.15rem;
       color: var(--text-light);
     }
 
@@ -250,49 +277,34 @@
       display: block;
       margin-top: 0.5rem;
       font-size: 0.8rem;
-      opacity: 0.6;
+      opacity: 0.55;
       font-style: normal;
       letter-spacing: 0.05em;
     }
 
     /* ── JOIN STEPS ──────────────────────────── */
-    .steps {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
+    .steps { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 2rem; }
 
-    .step {
-      display: grid;
-      grid-template-columns: 3rem 1fr;
-      gap: 1.2rem;
-      align-items: start;
-    }
+    .step { display: grid; grid-template-columns: 3rem 1fr; gap: 1.2rem; align-items: start; }
 
     .step-num {
       font-family: 'Cinzel', serif;
       font-size: 1.8rem;
       color: var(--gold);
-      opacity: 0.45;
+      opacity: 0.4;
       line-height: 1.1;
       text-align: right;
-      padding-top: 0.1rem;
     }
 
     .step-body strong {
       display: block;
       font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
       letter-spacing: 0.05em;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
       color: var(--gold-light);
     }
 
-    .step-body p {
-      font-size: 1rem;
-      margin: 0;
-    }
+    .step-body p { margin: 0; }
 
     /* ── CONTACT ─────────────────────────────── */
     #contact { text-align: center; }
@@ -305,13 +317,30 @@
       background: rgba(200,169,110,0.03);
     }
 
-    .contact-card > p {
-      font-size: 1rem;
-      opacity: 0.75;
+    .contact-card > p { opacity: 0.72; }
+
+    .reveal-btn {
+      background: transparent;
+      border: 1px solid rgba(200,169,110,0.4);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.3s, border-color 0.3s;
+      margin: 1.8rem 0;
+      display: inline-block;
+    }
+
+    .reveal-btn:hover {
+      background: rgba(200,169,110,0.08);
+      border-color: rgba(200,169,110,0.7);
     }
 
     .email-box {
-      display: inline-block;
+      display: none;
       margin: 1.8rem 0;
       padding: 0.9rem 2rem;
       border: 1px solid rgba(200,169,110,0.35);
@@ -323,18 +352,13 @@
       color: var(--gold-light);
     }
 
-    .email-box a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
+    .email-box a { color: inherit; text-decoration: none; transition: color 0.3s; }
     .email-box a:hover { color: #fff; }
 
     .location-line {
       margin-top: 1.5rem;
       font-size: 0.95rem;
-      opacity: 0.6;
+      opacity: 0.55;
       font-style: italic;
     }
 
@@ -343,12 +367,28 @@
       background: var(--dark);
       border-top: 1px solid rgba(200,169,110,0.1);
       text-align: center;
-      padding: 2.5rem 2rem;
+      padding: 0;
+    }
+
+    .footer-pave {
+      height: 28px;
+      background-color: #04040a;
+      background-image:
+        linear-gradient(45deg,  rgba(200,169,110,0.38) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(200,169,110,0.38) 25%, transparent 25%),
+        linear-gradient(45deg,  transparent 75%, rgba(200,169,110,0.38) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(200,169,110,0.38) 75%);
+      background-size: 28px 28px;
+      background-position: 0 0, 0 14px, 14px -14px, -14px 0;
+    }
+
+    .footer-text {
+      padding: 2rem;
       font-family: 'Cinzel', serif;
       font-size: 0.7rem;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       color: var(--text);
-      opacity: 0.4;
+      opacity: 0.38;
     }
 
     /* ── RESPONSIVE ──────────────────────────── */
@@ -359,6 +399,7 @@
       section:not(#hero) { padding: 4rem 1.5rem; }
       .contact-card { padding: 2rem 1.2rem; }
       .email-box { font-size: 0.85rem; padding: 0.8rem 1.2rem; }
+      .masonic-emblem { width: 100px; height: 100px; }
     }
 
     @media (max-width: 480px) {
@@ -370,7 +411,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#hero">✡ Étoile d'Israël</a>
+  <a class="nav-logo" href="#hero">Étoile d'Israël</a>
   <ul>
     <li><a href="#loge">La Loge</a></li>
     <li><a href="#franc-maconnerie">La FM</a></li>
@@ -382,22 +423,63 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="star">✡</div>
   <div class="hero-content">
+
+    <!--
+    ╔══════════════════════════════════════════════════════╗
+    ║  BLASON DE LA LOGE — ajouter l'image quand prête :   ║
+    ║  1. Placer le fichier dans img/blason-loge.webp       ║
+    ║  2. Décommenter les lignes <div> et <img> ci-dessous  ║
+    ╚══════════════════════════════════════════════════════╝
+
+    <div class="lodge-emblem">
+      <img src="img/blason-loge.webp" alt="Blason de la loge Étoile d'Israël" width="200">
+    </div>
+    -->
+
+    <!-- Équerre et Compas -->
+    <svg class="masonic-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Compass : pivot top-center, arms spread downward -->
+      <line x1="50" y1="9"  x2="14" y2="91" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="50" y1="9"  x2="86" y2="91" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Compass spread-pin arc -->
+      <path d="M 27 61 A 25 25 0 0 0 73 61" stroke="currentColor" stroke-width="2" fill="none"/>
+      <!-- Square (équerre) : right angle at (50,47), left arm, down arm -->
+      <line x1="21" y1="47" x2="50" y2="47" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="50" y1="47" x2="50" y2="86" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Right-angle indicator -->
+      <polyline points="44,47 44,53 50,53" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <!-- Letter G -->
+      <text x="68" y="72" text-anchor="middle" dominant-baseline="middle"
+            font-family="Cinzel,Georgia,serif" font-size="21" fill="currentColor">G</text>
+    </svg>
+
     <p class="hero-eyebrow">Loge maçonnique · Grand Orient de France</p>
     <h1>Étoile d'Israël</h1>
-    <div class="ornament">✦</div>
+
+    <!-- Sun · ornament · Moon -->
+    <div class="luminary-ornament">
+      <span class="rule-short"></span>
+      <span title="Soleil">☉</span>
+      <span>✦</span>
+      <span title="Lune">☽</span>
+      <span class="rule-short"></span>
+    </div>
+
     <p class="hero-tagline">« Liberté, Égalité, Fraternité »</p>
   </div>
   <div class="scroll-hint">↓</div>
 </section>
+
+<!-- Pavé Mosaïque -->
+<div class="pave-strip" aria-hidden="true"></div>
 
 <!-- LA LOGE -->
 <section id="loge">
   <div class="container">
     <span class="section-label">Notre atelier</span>
     <h2>Qui sommes-nous ?</h2>
-    <hr class="rule">
+    <div class="section-rule">☉ ✦ ☽</div>
     <p>
       La loge <strong>Étoile d'Israël</strong>, placée sous les auspices du <strong>Grand Orient de France</strong>, est une communauté fraternelle réunissant des hommes et des femmes unis par la recherche commune de la vérité, de la connaissance et du perfectionnement moral.
     </p>
@@ -411,6 +493,19 @@
     <p>
       Nos travaux, empreints de rigueur et de bienveillance, nous permettent d'explorer ensemble les grandes questions qui animent notre époque, tout en forgeant des liens durables entre les frères et sœurs de notre atelier.
     </p>
+
+    <!--
+    ╔══════════════════════════════════════════════════════╗
+    ║  BLASON DU GODF — ajouter quand prêt :               ║
+    ║  1. Placer le fichier dans img/blason-godf.webp       ║
+    ║  2. Décommenter le bloc ci-dessous                    ║
+    ╚══════════════════════════════════════════════════════╝
+
+    <div style="text-align:center; margin-top:3rem;">
+      <img src="img/blason-godf.webp" alt="Blason du Grand Orient de France"
+           style="max-width:160px; opacity:0.85; filter:drop-shadow(0 0 16px rgba(200,169,110,0.3));">
+    </div>
+    -->
   </div>
 </section>
 
@@ -419,7 +514,7 @@
   <div class="container">
     <span class="section-label">Découvrir</span>
     <h2>La Franc-Maçonnerie</h2>
-    <hr class="rule">
+    <div class="section-rule">☽ ✦ ☉</div>
     <p>
       La franc-maçonnerie est une fraternité initiatique universelle dont les origines symboliques remontent aux corporations de bâtisseurs du Moyen Âge. Elle rassemble aujourd'hui des millions de membres à travers le monde, unis par des valeurs communes&nbsp;: liberté de conscience, tolérance, fraternité et quête de connaissance.
     </p>
@@ -437,7 +532,7 @@
   <div class="container">
     <span class="section-label">Vous souhaitez nous rejoindre ?</span>
     <h2>Comment nous rejoindre</h2>
-    <hr class="rule">
+    <div class="section-rule">☉ ✦ ☽</div>
     <p>
       Nous ne cherchons pas à recruter, mais à accueillir sincèrement ceux et celles qui ressentent un appel véritable. La démarche est volontairement simple et sans formalité excessive.
     </p>
@@ -472,36 +567,51 @@
   <div class="container">
     <span class="section-label">Nous écrire</span>
     <h2>Contact</h2>
-    <hr class="rule" style="margin-left: auto; margin-right: auto; background: linear-gradient(to left, var(--gold), transparent);">
+    <div class="section-rule" style="justify-content: center;">☽ ✦ ☉</div>
     <div class="contact-card">
       <p>Pour toute demande, prise de contact ou envoi de lettre de motivation,<br>écrivez-nous à l'adresse suivante&nbsp;:</p>
-      <div class="email-box" id="eml-box">
-        <!-- adresse assemblée par JavaScript — absente du HTML source -->
-      </div>
-      <p class="location-line">Orient de Tel Aviv · Quartier d'Azrieli · Israël</p>
+      <button class="reveal-btn" id="reveal-btn" onclick="revealEmail()">
+        ✉ &nbsp; Afficher notre adresse de contact
+      </button>
+      <div class="email-box" id="eml-box"></div>
+      <p class="location-line">☉ &nbsp; Orient de Tel Aviv · Quartier d'Azrieli · Israël &nbsp; ☽</p>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  ✡ &nbsp;Loge Étoile d'Israël &nbsp;·&nbsp; Grand Orient de France &nbsp;·&nbsp; Orient de Tel Aviv
+  <div class="footer-pave" aria-hidden="true"></div>
+  <p class="footer-text">
+    Loge Étoile d'Israël &nbsp;·&nbsp; Grand Orient de France &nbsp;·&nbsp; Orient de Tel Aviv
+  </p>
 </footer>
 
 <script>
-  // L'adresse email est reconstituée côté client uniquement.
-  // Elle n'apparaît jamais en clair dans le code source HTML.
-  (function () {
-    var p = ['secret', 'tlv', '4948'];
-    var h = 'gmail';
-    var t = 'com';
-    var addr = p.join('.') + '\u0040' + h + '.' + t;
+  // Email obfuscation — double layer:
+  // 1. ROT13-encoded string (looks nothing like an email in source)
+  // 2. Only injected into the DOM after an explicit user click
+  // Bots that scrape HTML or even run JS without simulating clicks see nothing.
+  function rot13(s) {
+    return s.replace(/[a-zA-Z]/g, function(c) {
+      var base = c <= 'Z' ? 65 : 97;
+      return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+    });
+  }
+
+  function revealEmail() {
+    // ROT13 of: secret.tlv.4948@gmail.com
+    var encoded = 'frperg.gyi.4948\u0040tznvy.pbz';
+    var addr = rot13(encoded);
     var box = document.getElementById('eml-box');
+    var btn = document.getElementById('reveal-btn');
     var a = document.createElement('a');
     a.href = 'mai' + 'lto:' + addr;
     a.textContent = addr;
     box.appendChild(a);
-  })();
+    box.style.display = 'inline-block';
+    btn.style.display = 'none';
+  }
 </script>
 
 </body>
