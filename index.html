@@ -434,6 +434,12 @@
       .contact-card { padding: 2rem 1.2rem; }
       .email-box { font-size: 0.85rem; padding: 0.8rem 1.2rem; }
       .masonic-emblem { width: 100px; height: 100px; }
+      .lodge-emblem img { width: 180px; }
+      .lodge-emblem { margin-bottom: 0.15rem; }
+      body { font-size: 1.05rem; }
+      .hero-content h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+      h2 { font-size: clamp(1.5rem, 5vw, 2rem); }
+      .hero-tagline { font-size: 1rem; }
     }
 
     @media (max-width: 480px) {
@@ -449,7 +455,8 @@
   <ul>
     <li><a href="#loge">Loge</a></li>
     <li><a href="#franc-maconnerie">FM</a></li>
-    <li><a href="#rejoindre">Rejoindre</a></li>
+    <li><a href="#rejoindre">Démarche</a></li>
+    <li id="nav-event" style="display:none"><a href="#evenements">Événements</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -539,8 +546,8 @@
 <!-- REJOINDRE -->
 <section id="rejoindre">
   <div class="container">
-    <span class="section-label">Vous souhaitez nous rejoindre ?</span>
-    <h2>Comment nous rejoindre</h2>
+    <span class="section-label">La démarche</span>
+    <h2>Frapper à la porte</h2>
     <div class="section-rule">☉ ✦ ☽</div>
     <p>
       Nous ne cherchons pas à recruter, mais à accueillir sincèrement ceux et celles qui ressentent un appel véritable. La démarche est volontairement simple et sans formalité excessive.
@@ -567,6 +574,21 @@
           <p>Un échange informel vous permettra de mieux nous connaître et de poser librement toutes vos questions — sans engagement de part et d'autre.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÉVÉNEMENTS -->
+<section id="evenements" style="display:none">
+  <div class="container">
+    <span class="section-label">Agenda</span>
+    <h2 id="ev-titre"></h2>
+    <div class="section-rule">☉ ✦ ☽</div>
+    <p id="ev-date" style="font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); opacity:0.8;"></p>
+    <div style="margin-top:2rem;">
+      <a id="ev-flyer" href="#" target="_blank" rel="noopener" class="reveal-btn" style="text-decoration:none;">
+        ✦ &nbsp; Voir le flyer
+      </a>
     </div>
   </div>
 </section>
@@ -625,6 +647,18 @@
       return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
     });
   }
+
+  // Événement conditionnel — masqué si event.json absent
+  fetch('event.json')
+    .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(function(ev) {
+      document.getElementById('ev-titre').textContent = ev.titre;
+      document.getElementById('ev-date').textContent = ev.date;
+      document.getElementById('ev-flyer').href = ev.flyer_url;
+      document.getElementById('evenements').style.display = '';
+      document.getElementById('nav-event').style.display = '';
+    })
+    .catch(function() {});
 
   function revealEmail() {
     var encoded = 'frperg.gyi.4948\u0040tznvy.pbz';
